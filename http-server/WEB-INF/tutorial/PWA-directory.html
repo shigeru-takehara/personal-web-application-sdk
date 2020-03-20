@@ -1,0 +1,74 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>PWA Tutorial</title>
+	</head>
+
+	<body>
+		<h1>PWA Tutorial: PWA Directory</h1>
+		<p>As you unzip PWA.zip file, you install the PWA directory. You will see following files:
+		<table>
+			<tr>
+				<th>File Name</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>HttpServer.js</td>
+				<td>PWA Web HTTP Server</td>
+			<tr>
+			<tr>
+				<td>pwa.jar</td>
+				<td>PWA Java Objects, which would help you to build your applications</td>
+			<tr>
+			<tr>
+				<td><ul><li>startHelloWorld-tutorial.bat</li><li>startSyncDir-tutorial.bat</li></ul></td>
+				<td>PWA batch files described in the PWA Tutorial</td>
+			<tr>
+		</table>
+		<p>
+		<p>You also see following directories:
+		<table>
+			<tr>
+				<th>Directory Name</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>WEB-INF</td>
+				<td>You will store all HTML, JS, and CSS files used to build your applications. There are some default
+				sub-directories, but you can add and/or modify as you like. "javadoc", "jsdoc", and "tutorial" directories
+				are not needed for your applications. Feel free to delete what you don't use.</td>
+			<tr>
+			<tr>
+				<td>SERVER-SCRIPTS</td>
+				<td>You will place server-side Javascripts in this directory. We will disucss it later.</td>
+			<tr>
+			<tr>
+				<td>MY-DATA</td>
+				<td>This is the default data location for your applications.</td>
+			<tr>
+			<tr>
+				<td>TEMP</td>
+				<td>This is the default temporary directory. You can use this directory for any purpose.</td>
+			<tr>
+			<tr>
+				<td>UTIL</td>
+				<td>You can place any files to support your applications.</td>
+			<tr>
+		</table>
+		<p>
+		<a href="introduction.html">Prev</a> <a href="pages.html">Next</a>
+	</body>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+
+	<script>
+		pwa.webUtil.addCloseAppListener();
+	</script>
+</html>
+

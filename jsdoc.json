@@ -1,0 +1,10 @@
+{
+    "source": {
+        "includePattern": ".+\\.js$",   // Only process file ending in .js
+		  "recurseDepth": 10
+    },
+    "opts": {
+        "destination": "./http-server/WEB-INF/jsdoc", 
+        "recurse": true                         // Same as using -r or --recurse
+    }
+}

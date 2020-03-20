@@ -1,0 +1,116 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>PWA Tutorial</title>
+	</head>
+
+	<body>
+		<h1>PWA Tutorial: Server-Side Programming</h1>
+		<h2>Browser(client) Side</h2>
+		<p>The server-side logic is always executed through REST "Get" call only. In PWA, it uses Axios object.</p>
+		<p>In the previous page "Single or Multiple Page Application", you may notice that you can view HTML files used
+		in PWA SDK. It uses the Axios call. Please take a look at <a onClick="viewFile('WEB-INF/tutorial/pages.html')">pages.html.</a>
+		At the bottom, you will see:
+		<xmp>
+			function viewFile(fileName) {
+				axios
+					.get(pwa.webUtil.URL + 'util/getData.jjs?' + fileName)
+					.then(response => {
+						document.getElementById("fleViewTextArea").value = response.data;
+						pwa.webUtil.onClickOpen('fileViewModal');
+					});
+			}
+		</xmp>
+		The Axios calls "util/getData.jjs" API. The actual file is located in SERVER-SCRIPTS/jjs/util/getData.js. Please be aware that at the client side, it uses "jjs" extension, but at the server side, it uses "js" extension and it should be "SERVER-SCRIPTS/jjs" directory where all JavaScripts files are used for server-side API.
+		</p>
+		<h2>Server Side</h2>
+		<p>At the server side, all JavaScripts files are under SERVER-SCRIPTS directory.<br>
+		<table>
+			<tr>
+				<th>Directory Name</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>jjs</td>
+				<td>REST Get API files</td>
+			</tr>
+			<tr>
+				<td>js</td>
+				<td>Supporting JavaScript files. All files are called from JavaScripts in "jjs" directory.</td>
+			</tr>
+			<tr>
+				<td>lib</td>
+				<td>Supporting library JavaScript files</td>
+			</tr>
+		</table>
+		If you need to provide complex processing, you could develop it in Java and use it through JavaScripts. The PWA SDK uses
+		<a href="https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)">Nashorn.</a> You can learn it quickly<a href="https://www.tutorialspoint.com/java8/java8_nashorn_java_script.htm">here</a> or more details in <a href="https://docs.oracle.com/javase/10/nashorn/introduction.htm#JSNUG136">here.</a>
+		</p>
+		<h3>JJS Directory</h3>
+		<p>One JavaScript file should provide one API and it must implement jjsExec(args) function. The args is a parameter sent from
+		Axios call. For example, the above "util/getData.jjs" is implemented as follows:
+		<xmp>
+			function jjsExec(args) {
+				var args = pwa.process.getArgs4Jjs(args);
+				var fileName = args[0];
+				try {
+					return pwa.file.read(fileName);
+				}
+				catch(e) {
+					return "";
+				}
+			}
+		</xmp>
+		If the processing can be finished in very short period of time, it's fine to place the processing logic within jjsExec function.
+		If it takes time, it should be processed in asynchronously. For example, "util/saveData.js" is implemented as follows.
+		<xmp>
+			function jjsExec(args) {
+				return pwa.process.runAsync("SERVER-SCRIPTS/js/saveDataAsync.js", args);
+			}
+		</xmp>
+		Saving data won't take much time, but we don't need to wait until it's complete. That's why pwa.process.runAsync is used here. 
+		</p>
+		<h3>JS Directory</h3>
+		<p>As you see "util/saveData.js" implementation, another JavaScript file, "saveDataAsync.js" is located in the "js" directory.
+		The "saveDataAsync.js" file is implemented as follows:
+		<xmp>
+			load("SERVER-SCRIPTS/lib/LoadLib.js");
+
+			var args = pwa.process.getArgs();
+			pwa.file.write(args[0], args[1]);
+		</xmp>
+		We need to load "LoadLib.js" because this JavaScript runs on another process.
+		</p>
+		<h3>LIB Directory</h3>
+		<p>Common functions are placed in this directory. Your personal library files should be placed in myLib directory and load
+		all files from <a href="/jsdoc/SERVER-SCRIPTS_lib_LoadLib.js.html">loadMyLib.js file,</a> which is called from LoadLib.js file.
+		All library functions are documented <a href="/jsdoc/index.html">here.</a>
+		</p>
+		<div id="fileViewModal" class="modal">
+		  <div class="modal-content">
+			<span class="close" onClick="pwa.webUtil.onClickClose('fileViewModal')">&times;</span>
+			<textarea id="fleViewTextArea" readonly placeholder="File Viewer" rows="30"></textarea>
+		  </div>
+		</div>
+		<a href="pages.html">Prev</a> <a href="pwaJava.html">Next</a>
+	</body>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+	<script>
+		function viewFile(fileName) {
+			axios
+				.get(pwa.webUtil.URL + 'util/getData.jjs?' + fileName)
+				.then(response => {
+					document.getElementById("fleViewTextArea").value = response.data;
+					pwa.webUtil.onClickOpen('fileViewModal');
+				});
+		}
+	</script>
+</html>
+

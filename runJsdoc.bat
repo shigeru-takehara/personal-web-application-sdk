@@ -1,0 +1,1 @@
+jsdoc http-server -p -r -c jsdoc.json

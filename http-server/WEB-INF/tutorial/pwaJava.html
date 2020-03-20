@@ -1,0 +1,58 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>PWA Tutorial</title>
+	</head>
+
+	<body>
+		<h1>PWA Tutorial: JAVA Objects</h1>
+		<p>All PWA Java Classes are documented <a href="/javadoc/index.html">here.</a>
+		These classes would help you when you build applications that support your daily work. Some of your routine work depends on
+		the result of some system, then you might execute some program to do, and then you might check something and do something else.
+		If these routine work is manually executed, you could automate the routine work with PWA. The PWA Java classes could help you to
+		build such automation application that could be executed from the browser.
+		</p>
+		<h2>Concept</h2>
+		<p>
+		Assume we run programs, which shows the result in its log file, on the console screen, does something that we could check. When a program is executed, <a href="/javadoc/pwa/util/CmdWinController.html">CmdWinController</a> object is used. This object could store the information displayed on the screen and could return the result of 
+		the program, but it cannot manage when the program finishes, which has to be managed by us with <a href="/javadoc/pwa/util/CmdCompletionChecker.html">CmdCompletionChecker object,</a> which provides several methods to check if the program finishes or not. To display processing status, <a href="/javadoc/pwa/util/CmdLogger.html">CmdLogger</a> is used.
+		</p>
+		<h2>CmdWinController Object</h2>
+		<p>When this object is intantiated and used, we should set "tempFilePrefix" before calling executeCommand method. All processing tracking is done with temporary files in OS' temp directory. The temporary file is named with "tempFilePrefix" value as the file name prefix. For actual use, we should use <a href="/jsdoc/pwa.commandWindow.html">pwa.commandWindow.initialize and pwa.commandWindow.close methods.</a>
+		</p>
+		<p>In PWA JavaScripts, this object is called "cmdWin".</p>
+		<h2>CmdCompletionChecker Object</h2>
+		<p>This object provides several methods that check if the command is finished or not. Use the methods whose name starts with "wait". For example, "waitForCommand", "waitByFileContent", etc. The processing will be waiting until specified condition is met. If the waiting condition is not the information on the console and in another external file, you should use the "wait" method that requires the external file name.
+		</p>
+		<p>In PWA JavaScripts, this object is called "cmdWait".</p>
+		<h2>CmdLogger Object</h2>
+		<p>When your automation application starts, we may want to see processing status/result. Use this object for that purpose. For example,
+		This is calling methods:
+		<xmp>
+			cmdLogger.log("##### Build ABC #####");
+			cmdLogger.logRun(command);
+			cmdLogger.logDoneSuccess(command);
+			cmdLogger.close();
+		</xmp>
+		The below is corresponding logging information in the log file.
+		<xmp>
+			2020-03-15 11:43:56.551 ##### Build ABC #####
+			2020-03-15 11:43:59.693 Run: ABC build
+			2020-03-15 11:46:09.826 Done-Success: ABC build Lasted 0:2:10
+			2020-03-15 11:46:10.831 Overall Lasted 0:2:14
+		</xmp>
+		</p>
+		<p>In PWA JavaScripts, this object is called "cmdLogger".</p>
+		
+		<a href="serverSide.html">Prev</a> <a href="pwaExample.html">Next</a>
+	</body>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+</html>
+
