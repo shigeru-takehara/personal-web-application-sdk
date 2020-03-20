@@ -1,0 +1,82 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>PWA Tutorial</title>
+	</head>
+
+	<body>
+		<h1>PWA Tutorial: Example</h1>
+		<p>Let's build a PWA application that starts a dummy application and checks if the dummy application is finished or not.</p>
+		<p>The<a onClick="viewFile('UTIL/tutorial/ExampleApp1.js')">dummy application</a> is located in UTIL/tutorial directory. This application
+		mimics the actual processing. It will show processing inforation on the console if you execute it from the Command Window.
+		<xmp>
+			C:\dev\PWA\http-server\UTIL\tutorial>jjs ExampleApp1.js
+			Processing 1 done.
+			Processing 2 done.
+			Completed Successfully.
+		</xmp>
+		or
+		<xmp>
+			C:\dev\PWA\http-server\UTIL\tutorial>jjs ExampleApp1.js
+			Processing 1 done.
+			Processing 2 done.
+			Failed.
+		</xmp>
+		</p>
+		<p>The PWA application has "Run" button and one "Status" text area where it shows the processing log like above. 
+		<div>
+		<ul>
+			<li>This browser-side uses VUE-JS, which consists of one HTML file, <a onClick="viewFile('WEB-INF/tutorial/exampleApp1.html')">exampleApp1.html,</a> and one JavaScripts file, <a onClick="viewFile('WEB-INF/tutorial/js/comp-exampleApp1.js')">comp-exampleApp1.js.</a>
+			</li>
+			<li>The server-side uses <a onClick="viewFile('SERVER-SCRIPTS/jjs/tutorial/runApp.js')">jjs/tutorial/runApp.js.</a></li>
+		</ul>
+		</div>
+		</p>
+		<p>Click <a href="exampleApp1.html">PWA Application</a>to open the page. There are three implementations to track the dummy application's processing.
+		<div>
+		<ul>
+			<li>The first implementation is not so efficient so that it takes the longest time to finish. (It takes about 25+ seconds.)</li>
+			<li>The second one is a good implementation. (It takes about 15+ seconds.)</li>
+			<li>The third one is the best one since it checks if the dummy application finishes or not in addition to the second implementation.</li>
+		</ul>
+		</div>
+		</p>
+		<p>After processing, please see the OS' Temp directory. You will see the following 4 log files.
+		<div>
+		<ul>
+			<li>exampleApp1CmdWinController....txt</li>
+			<li>exampleApp1CmdLogger....txt</li>
+			<li>checkExampleApp1DoneCmdWinController....txt</li>
+			<li>checkExampleApp1DoneCmdLogger....txt</li>
+		</ul>
+		</div>
+		The "exampleApp1" and "checkExampleApp1Done" are the "TempFilePrefix" in the scripts.
+		</p>
+		<div id="fileViewModal" class="modal">
+		  <div class="modal-content">
+			<span class="close" onClick="pwa.webUtil.onClickClose('fileViewModal')">&times;</span>
+			<textarea id="fleViewTextArea" readonly placeholder="File Viewer" rows="30"></textarea>
+		  </div>
+		</div>
+		<a href="pwaJava.html">Prev</a> <a href="tableOfContent.html">Next</a>
+	</body>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+	<script>
+		function viewFile(fileName) {
+			axios
+				.get(pwa.webUtil.URL + 'util/getData.jjs?' + fileName)
+				.then(response => {
+					document.getElementById("fleViewTextArea").value = response.data;
+					pwa.webUtil.onClickOpen('fileViewModal');
+				});
+		}
+	</script>
+</html>
+

@@ -1,0 +1,51 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>Personal Web Application SDK</title>
+	</head>
+
+	<body>
+		<h1>Personal Web Application (PWA) SDK</h1>
+		<p><b>PWA SDK</b> provides software components with which you can build your personal application within a web browser.</p>
+		<p><b>What is the "personal web application"?</b>
+		You start your application from a command file that will open the web page. When you close the web page, the application will be terminated so that you cannot view the web page any more. It works in your computer as you need. The size of an application should be less than 100MB.It's a really small application.<p>
+		
+		<p>The default application framework is <b>vue-js</b> and <b>primitive-ui css.</b> You don't need to stick to these and you can use any tools you like.</p>
+		
+		<p>Any IO operation between browser and server-side should be only "GET" method. <b>Axios</b> is used for "GET" call.<p>
+		
+		<p>Please read <a href="/tutorial/tableOfContent.html">PWA Tutorial</a> first to build your application.</p>
+		<p>Download <b>PWA-SDK</b> from <a href="/tutorial/pwa.zip">here.</a></p>
+		<p><B>* Currently, PWA works fully on only Windows environment.</B>This is because some of functions used in PWA are specific to Windows OS. If it is executed on a different OS, it would throw an "MethodNotImplmented" Exception.</p>
+		
+		<h3>Installation</h3>
+		Downlad pwa.zip file from the above link, unzip to you "dev" directory, and execute startPWA.bat program. You will see this page in your browser.
+		<h3>Example</h3>
+		<ul>
+			<li><a href="helloWorld.html">Hello World!</a></li>
+			<li><a href="util/syncDir.html">Synchronize Directories</a></li>
+		</ul>
+		<h3>Reference</h3>
+		<ul>
+			<li><a href="/jsdoc/index.html">PWA JavaScripts Docs</a></li>
+			<li><a href="/javadoc/index.html">PWA Java Docs</a></li>
+		</ul>
+
+		<div id="logOut" class="modal">
+		  <div class="modal-content">
+			<p>Please close this page to finish.</p>
+		  </div>
+		</div>
+
+		<button class="button" onClick="pwa.webUtil.closeHTMLApp();pwa.webUtil.onClickOpen('logOut');" title="Close This HTML App.">Close</button>
+	</body>
+	<script src="/js/vue-2.6.11.js"></script>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+</html>

@@ -1,0 +1,59 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>PWA Tutorial</title>
+	</head>
+
+	<body>
+		<h1>PWA Tutorial: Introduction</h1>
+		<p>The idea is "can we build a web application that just runs on my local computer?" Microsoft used to have Visual Basic,
+		which allowed us to build an Windows application very easily. I wanted to have a tool like that for web applications because
+		most of daily works is within the browser. It would be nice to have my own applications that help my daily work in the browser.</p>
+		
+		<p>PWA includes a small web <a href="/jsdoc/pwa.httpServer.html">HTTP server</a> that works with only "GET" method. You can develop web pages with any Javascripts framework.
+		As described in the index page, <a href="https://vuejs.org/">Vue-JS</a> and <a href="https://taniarascia.github.io/primitive/">Primitive-UI CSS</a> are used as default, and <a href="https://github.com/axios/axios">Axios</a> is used for REST call. 
+			<div>
+				<ul>
+					<li><a href="../helloWorld.html">"Hello World!"</a> page	is developed with HTML and Javascripts</li>
+					<li><a href="../util/syncDir.html">"Synchronize Directories"</a> page is developed with Vue-JS.</li>
+				</ul>
+			</div>
+		</p>
+		
+		<p>This tutorial provides how to develop HTML pages in the PWA way. Also, it will describe how to use Java objects developed for PWA,
+		which helps to develop applications that support your daily work.</p>
+		
+		<p>Each web page could become a single page application. For example, in the PWA directory you installed includes:
+			<div>
+				<ul>
+					<li><a onClick="runCmd('startHelloWorld-tutorial.bat')">startHelloWorld.bat</a></li>
+					<li><a onClick="runCmd('startSyncDir-tutorial.bat')">startSyncDir.bat.</a></li>
+				</ul>
+			</div>
+		If you run them, each runs as a standalone application. it runs from another instanciated "Command Window". If 
+		you close the browser tab, the corresponding "Command Window" will be terminated. Just click the above two links. You can run
+		the program from here.</p>
+		
+		<a href="tableOfContent.html">Prev</a> <a href="PWA-directory.html">Next</a>
+	</body>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+
+	<script>
+		pwa.webUtil.addCloseAppListener();
+	</script>
+	
+	<script>
+		function runCmd(cmd) {
+			axios.get(pwa.webUtil.URL + 'util/openCmd.jjs?&' + cmd);
+		}
+	</script>
+
+</html>
+

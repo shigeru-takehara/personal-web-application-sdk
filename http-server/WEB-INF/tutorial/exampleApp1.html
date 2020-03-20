@@ -1,0 +1,37 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/css/primitive-ui-main.css" />
+		<link rel="stylesheet" href="/css/pwa.css" />
+
+		<title>Example App1</title>
+	</head>
+
+	<body>
+		<h1>Example Application</h1>
+		<div><ul><li>The first implementation shows how to use cmdWin.getCommandResult() method. The cmdWait.waitForCommandDone(5) method will checked
+		the console information if it has been updated in 5 seconds or not. If not, it understands as "done".</li>
+		<li>The second implmentation shows more detail information timely.</li>
+		<li>The third implementation shows how to check if the command finishes or not with pwa.process.checkProcessDoneByCommandLine method. "jjs.exe"
+		is the executing program and "StartExampleApp1.bat" is the criteria in the command line string that could uniquely be identified.</li>
+		</ul></div>
+		<div id="example-app1">
+			<example-app1
+				v-bind:options="options"
+				v-bind:buttondisabled="buttondisabled"
+				v-bind:status="status"
+			>
+			</example-app1>
+		</div>
+		<a href="pwaExample.html">Prev</a>
+	</body>
+
+	<script src="/js/vue-2.6.11.js"></script>
+	<script src="/js/axios.min.js"></script>
+	<script src="/js/webUtil.js"></script>
+
+	<script src="/tutorial/js/comp-exampleApp1.js"></script>
+</html>
