@@ -365,7 +365,8 @@ pwa.process = (function () {
 	 */
 	var instantiateProcess = function(scriptName, args) {
 		var procBuilder = new ProcessBuilder();
-		procBuilder.command("jjs.exe", "-cp pwa.jar", "-D" + JJS_EXEC_PARAM_KEY + "=" + args, scriptName);
+		var jarPaths = pwa.system.getEnv("JAR_PATHS");
+		procBuilder.command("jjs.exe", "-cp " + jarPaths, "-D" + JJS_EXEC_PARAM_KEY + "=" + args, scriptName);
 		return procBuilder.start();
 	};
 
