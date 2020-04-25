@@ -3,7 +3,7 @@
 setlocal
 
 cd http-server
-jjs -cp pwa.jar HttpServer.js -scripting -- %1
+jjs -cp %JAR_PATHS% HttpServer.js -scripting -- %1
 
 endlocal
 cd ..
