@@ -331,10 +331,18 @@ pwa.process = (function () {
 			return null;
 		}
 		else {
-			return URLDecoder.decode(args, "utf-8").split(/\&/);
+			return splitArgs(args);
 		}
 	};
 
+	var splitArgs = function(args) {
+		var params = args.split(/\&/);
+		for(var i=0; i<params.length; i++) {
+			params[i] = URLDecoder.decode(params[i], "utf-8");
+		}
+		return params;
+	};
+	
 	var JJS_EXEC_PARAM_KEY = "jjsExecParamKey";
 
 	/**
@@ -349,7 +357,8 @@ pwa.process = (function () {
 			return null;
 		}
 		else {
-			return URLDecoder.decode(System.getProperty(JJS_EXEC_PARAM_KEY), "utf-8").split(/\&/);
+			var params = System.getProperty(JJS_EXEC_PARAM_KEY);
+			return splitArgs(params);
 		}
 	};
 

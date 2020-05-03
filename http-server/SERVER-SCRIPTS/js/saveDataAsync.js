@@ -2,4 +2,6 @@
 load("SERVER-SCRIPTS/lib/LoadLib.js");
 
 var args = pwa.process.getArgs();
-pwa.file.write(args[0], args[1]);
+
+var content = pwa.file.read(args[1]);
+pwa.file.write(args[0], content);
