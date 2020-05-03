@@ -8,3 +8,5 @@ Main Points:
 - Use any framework for client side development
 - Use Nashorn https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine) for server side development
 - Can share very easily in one zip file
+- Can manage processing status from console info/log and/or process ID
+- Can easily develop your own web-based application and good-bye from command-based processing
