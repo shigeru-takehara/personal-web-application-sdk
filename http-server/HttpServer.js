@@ -17,6 +17,8 @@ pwa.httpServer = (function () {
 	var FOUROHFOUR = "<HTML><HEAD><TITLE>404 Not Found</TITLE></HEAD><BODY><P>404 Not Found</P></BODY></HTML>";
 
 	print("PWA port# = [" + PORT + "] Please close this if you are done.");
+	var startPage = pwa.system.getEnv("START_PAGE");
+	if (startPage) print("PWA start web page = [" + startPage + "] Please close this if you are done.");
 
 	/**
 	 * Stop PWA Http Server.

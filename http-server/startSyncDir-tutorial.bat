@@ -1,4 +1,4 @@
 @echo off
 cd ..
-call startpwa util/syncDir.html
+start /min cmd.exe /c startSyncDir.bat
 exit
