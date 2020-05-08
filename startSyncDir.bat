@@ -1,2 +1,3 @@
 @echo off
-startpwa util/syncDir.html
+set START_PAGE=util/syncDir.html
+startpwa %START_PAGE%

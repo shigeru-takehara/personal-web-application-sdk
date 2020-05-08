@@ -1,4 +1,4 @@
 @echo off
 cd ..
-call startpwa helloWorld.html
+start /min cmd.exe /c startHelloWorld.bat
 exit

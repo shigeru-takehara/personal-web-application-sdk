@@ -1,2 +1,3 @@
 @echo off
-startpwa helloWorld.html
+set START_PAGE=helloWorld.html
+startpwa %START_PAGE%
