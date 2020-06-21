@@ -18,14 +18,6 @@ pwa.webUtil = (function () {
 	_pub.DATA_SEPARATOR = '!=====!'; 	// defined in System.js at Server-side.
 
 	/**
-	 * The jjs/util/getData.js returns this when there is no data.
-	 *
-	 * @memberof pwa.webUtil
-	 * @alias pwa.webUtil.NO_RESULT
-	 */
-	_pub.NO_RESULT = '__NO_RESULT__';	// defined in System.js at Server-side.
-
-	/**
 	 * Return the current domain URL.
 	 *
 	 * @private
