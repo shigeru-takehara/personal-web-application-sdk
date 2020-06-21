@@ -19,6 +19,14 @@ pwa.system = (function () {
 	_pub.DATA_SEPARATOR = '!=====!';
 
 	/**
+	 * The jjs/util/getData.js returns this when there is no data.
+	 *
+	 * @memberof pwa.system
+	 * @alias pwa.system.NO_RESULT
+	 */
+	_pub.NO_RESULT = '__NO_RESULT__';
+
+	/**
 	 * Return environment variable value.
 	 *
 	 * @memberof pwa.system
