@@ -90,7 +90,14 @@ pwa.webUtil = (function () {
 			_pub.closeApp();
 			_pub.closeApp(); // just in case first time does not work
 			_pub.closeApp(); // just in case second time does not work
+		});
+		
+		window.addEventListener('unload', function (e) { 
+			_pub.closeApp();
+			_pub.closeApp(); // just in case first time does not work
+			_pub.closeApp(); // just in case second time does not work
 		}); 
+
 	}
 
 	/**
